@@ -1,0 +1,18 @@
+
+model:
+  model_name: "HuggingFaceTB/SmolLM2-135M-Instruct"
+  torch_dtype_str: "bfloat16"
+  trust_remote_code: True
+
+data:
+  train:
+    datasets:
+      - dataset_name: "yahma/alpaca-cleaned"
+    target_col: "prompt"
+
+training:
+  trainer_type: "TRL_SFT"
+  per_device_train_batch_size: 2
+  max_steps: 10 # Quick "mini" training, for demo purposes only.
+  run_name: "smollm2_135m_sft"
+  output_dir: "tour_tutorial/output"
